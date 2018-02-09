@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchweather } from '../actions/index';
 
 export default class SearchBar extends Component {
   constructor(props) {
@@ -13,9 +16,11 @@ export default class SearchBar extends Component {
   }
 
   onFormSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
+
+    // need to go fetch weather data
   }
-  
+
   render() {
     return (
       <form onSubmit={this.onFormSubmit} className='input-group'>
