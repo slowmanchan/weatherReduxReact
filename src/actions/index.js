@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const API_KEY = 'ddc2fcabe23293a4392f824dcae32290';
 const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`
 // actions as constants improve consistancy (I can change the string and )

@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchweather } from '../actions/index';
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = { term: '' };
-    this.onInputChange = this.onInputChange.bind(this)
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   onInputChange(e) {
@@ -17,7 +18,8 @@ export default class SearchBar extends Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-
+    this.props.fetchweather(this.state.term)
+    this.setState({ term: '' })
     // need to go fetch weather data
   }
 
@@ -37,3 +39,11 @@ export default class SearchBar extends Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  // no need to call dispatch(fetchweater) .. fetchweather is now bound to dispatch
+  // so jsut call fetchweater, will dispatch the action
+  return bindActionCreators({ fetchweather }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);
